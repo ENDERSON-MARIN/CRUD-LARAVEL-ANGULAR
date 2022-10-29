@@ -1,0 +1,142 @@
+<div class="container">
+  <div class="display-flex mb-4" style="height: 40px; width: 100%">
+    <h6 style="flex: 1 1 auto">Editar computador</h6>
+    <img src="../assets/img/gc-icon.png" style="height: 100%" />
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- FORM EDIT -->
+      <form class="row" (submit)="actualizarComputer()">
+        <!-- gce_nombre_equipo -->
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          <input
+            required
+            class="form-control"
+            type="text"
+            name="gce_nombre_equipo"
+            [(ngModel)]="computer.gce_nombre_equipo"
+            placeholder="Nombre del equipo"
+          />
+        </div>
+        <!-- gce_board -->
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          <input
+            required
+            class="form-control"
+            type="text"
+            name="gce_board"
+            [(ngModel)]="computer.gce_board"
+            placeholder="Board"
+          />
+        </div>
+        <!-- gce_case -->
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          <input
+            required
+            class="form-control"
+            type="text"
+            name="gce_case"
+            [(ngModel)]="computer.gce_case"
+            placeholder="Case"
+          />
+        </div>
+        <!-- gce_procesador -->
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          <input
+            required
+            class="form-control"
+            type="text"
+            name="gce_procesador"
+            [(ngModel)]="computer.gce_procesador"
+            placeholder="Procesador"
+          />
+        </div>
+        <!-- gce_grafica -->
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          <input
+            required
+            class="form-control"
+            type="text"
+            name="gce_grafica"
+            [(ngModel)]="computer.gce_grafica"
+            placeholder="Gráfica"
+          />
+        </div>
+        <!-- gce_ram -->
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          <input
+            required
+            class="form-control"
+            type="text"
+            name="gce_ram"
+            [(ngModel)]="computer.gce_ram"
+            placeholder="Ram"
+          />
+        </div>
+        <!-- gce_disco_duro -->
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          <input
+            required
+            class="form-control"
+            type="text"
+            name="gce_disco_duro"
+            [(ngModel)]="computer.gce_disco_duro"
+            placeholder="Disco"
+          />
+        </div>
+        <!-- gce_teclado -->
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          <input
+            required
+            class="form-control"
+            type="text"
+            name="gce_teclado"
+            [(ngModel)]="computer.gce_teclado"
+            placeholder="Teclado"
+          />
+        </div>
+        <!-- gce_mouse -->
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+          <input
+            required
+            class="form-control"
+            type="text"
+            name="gce_mouse"
+            [(ngModel)]="computer.gce_mouse"
+            placeholder="Mouse"
+          />
+        </div>
+        <!-- gce_pantalla -->
+        <div class="mb-3 col-sm-6 col-lg-6">
+          <input
+            required
+            class="form-control"
+            type="text"
+            name="gce_pantalla"
+            [(ngModel)]="computer.gce_pantalla"
+            placeholder="Pantalla"
+          />
+        </div>
+        <!-- gce_estado -->
+        <label class="mb-3 col-sm-6 col-lg-6 position-relative">
+          <div class="position-absolute">Estado</div>
+          <select
+            class="form-select"
+            name="gce_estado"
+            [(ngModel)]="computer.gce_estado"
+          >
+            <option value="1" selected>Activo</option>
+            <option value="0">Inactivo</option>
+          </select>
+        </label>
+        <div class="col-12 mb-3 display-grid">
+          <button type="submit" class="btn btn-primary">
+            Guardar
+          </button>
+        </div>
+      </form>
+
+      <!-- END FORM EDIT -->
+    </div>
+  </div>
+</div>

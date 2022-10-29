@@ -1,0 +1,215 @@
+<div class="container">
+  <div class="display-flex mb-4" style="height: 40px; width: 100%">
+    <h6 style="flex: 1 1 auto">Registro de Computadores</h6>
+    <img src="../assets/img/gc-icon.png" style="height: 100%" />
+  </div>
+
+  <!-- Formulario de inserción -->
+  <form (submit)="submitComputer()" class="row">
+    <!-- gce_nombre_equipo -->
+    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+      <input
+        required
+        class="form-control"
+        type="text"
+        name="gce_nombre_equipo"
+        [(ngModel)]="computer.gce_nombre_equipo"
+        placeholder="Nombre del equipo"
+      />
+    </div>
+    <!-- gce_board -->
+    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+      <input
+        required
+        class="form-control"
+        type="text"
+        name="gce_board"
+        [(ngModel)]="computer.gce_board"
+        placeholder="Board"
+      />
+    </div>
+    <!-- gce_case -->
+    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+      <input
+        required
+        class="form-control"
+        type="text"
+        name="gce_case"
+        [(ngModel)]="computer.gce_case"
+        placeholder="Case"
+      />
+    </div>
+    <!-- gce_procesador -->
+    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+      <input
+        required
+        class="form-control"
+        type="text"
+        name="gce_procesador"
+        [(ngModel)]="computer.gce_procesador"
+        placeholder="Procesador"
+      />
+    </div>
+    <!-- gce_grafica -->
+    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+      <input
+        required
+        class="form-control"
+        type="text"
+        name="gce_grafica"
+        [(ngModel)]="computer.gce_grafica"
+        placeholder="Gráfica"
+      />
+    </div>
+    <!-- gce_ram -->
+    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+      <input
+        required
+        class="form-control"
+        type="text"
+        name="gce_ram"
+        [(ngModel)]="computer.gce_ram"
+        placeholder="Ram"
+      />
+    </div>
+    <!-- gce_disco_duro -->
+    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+      <input
+        required
+        class="form-control"
+        type="text"
+        name="gce_disco_duro"
+        [(ngModel)]="computer.gce_disco_duro"
+        placeholder="Disco"
+      />
+    </div>
+    <!-- gce_teclado -->
+    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+      <input
+        required
+        class="form-control"
+        type="text"
+        name="gce_teclado"
+        [(ngModel)]="computer.gce_teclado"
+        placeholder="Teclado"
+      />
+    </div>
+    <!-- gce_mouse -->
+    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+      <input
+        required
+        class="form-control"
+        type="text"
+        name="gce_mouse"
+        [(ngModel)]="computer.gce_mouse"
+        placeholder="Mouse"
+      />
+    </div>
+    <!-- gce_pantalla -->
+    <div class="mb-3 col-sm-6 col-lg-6">
+      <input
+        required
+        class="form-control"
+        type="text"
+        name="gce_pantalla"
+        [(ngModel)]="computer.gce_pantalla"
+        placeholder="Pantalla"
+      />
+    </div>
+    <!-- gce_estado -->
+    <label class="mb-3 col-sm-6 col-lg-6 position-relative">
+      <div class="position-absolute">Estado</div>
+      <select
+        class="form-select"
+        name="gce_estado"
+        [(ngModel)]="computer.gce_estado"
+      >
+        <option value="1" selected>Activo</option>
+        <option value="0">Inactivo</option>
+      </select>
+    </label>
+    <div class="col-12 mb-3 display-grid">
+      <button type="submit" class="btn btn-primary">
+        <i
+          class="fas fa-plus-square me-2 vertical-align-middle"
+          style="font-size: 1.2em"
+        ></i>
+        Agregar
+      </button>
+    </div>
+  </form>
+  <h6 class="" style="flex: 1 1 auto">Listado de Computadores</h6>
+  <!-- Listado -->
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+    <div class="table-responsive">
+      <table
+        id="list-table"
+        class="table table-striped table-bordered table-condensed table-hover"
+      >
+        <thead style="background-color: #a9d0f5">
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Board</th>
+            <th>Case</th>
+            <th>Procesador</th>
+            <th>Gráfica</th>
+            <th>Ram</th>
+            <th>Disco duro</th>
+            <th>Teclado</th>
+            <th>Mouse</th>
+            <th>Pantalla</th>
+            <th>Estado</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let computador of computadores"
+            [ngClass]="{ rowBgRed: computador.gce_estado === 0 }"
+          >
+            <td>{{ computador.gce_id }}</td>
+            <td>{{ computador.gce_nombre_equipo | titlecase }}</td>
+            <td>{{ computador.gce_board | titlecase }}</td>
+            <td>{{ computador.gce_case | titlecase }}</td>
+            <td>{{ computador.gce_procesador | titlecase }}</td>
+            <td>{{ computador.gce_grafica | titlecase }}</td>
+            <td>{{ computador.gce_ram | titlecase }}</td>
+            <td>{{ computador.gce_disco_duro | titlecase }}</td>
+            <td>{{ computador.gce_teclado | titlecase }}</td>
+            <td>{{ computador.gce_mouse | titlecase }}</td>
+            <td>{{ computador.gce_pantalla | titlecase }}</td>
+            <td>
+              <div class="form-check form-switch">
+                <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="toggleFilter"
+                (click)="changeStatus(computador.gce_id!)" />
+              </div>
+            </td>
+
+            <td>
+              <button
+                [routerLink]="['/edit', computador.gce_id]"
+                type="button"
+                class="btn btn-outline-info fa fa-edit"
+              ></button>
+            </td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-outline-danger fa fa-trash"
+                (click)="eliminarComputer(computador.gce_id!)"
+              ></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- END LISTADO -->
