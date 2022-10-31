@@ -4,6 +4,7 @@ import { AppService } from '../../../app.service';
 import { Computer } from '../../../app.interface';
 
 import Swal from 'sweetalert2';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-listado',
@@ -11,26 +12,32 @@ import Swal from 'sweetalert2';
   styleUrls: ['./listado.component.scss'],
 })
 export class ListadoComponent implements OnInit {
-  ngOnInit(): void {}
-
   public computadores: Computer[] = [];
 
-  computer: Computer = {
-    gce_nombre_equipo: '',
-    gce_board: '',
-    gce_case: '',
-    gce_procesador: '',
-    gce_grafica: '',
-    gce_ram: '',
-    gce_disco_duro: '',
-    gce_teclado: '',
-    gce_mouse: '',
-    gce_pantalla: '',
-    gce_estado: 1,
-  };
+  public computerForm!: FormGroup;
 
-  constructor(private service: AppService) {
+  ngOnInit(): void {
+    this.computerForm = this.initForm();
+  }
+
+  constructor(private service: AppService, private readonly fb: FormBuilder) {
     this.getComputers();
+  }
+
+  initForm(): FormGroup {
+    return this.fb.group({
+      gce_nombre_equipo: ['', [Validators.required]],
+      gce_board: ['', [Validators.required]],
+      gce_case: ['', [Validators.required]],
+      gce_procesador: ['', [Validators.required]],
+      gce_grafica: ['', [Validators.required]],
+      gce_ram: ['', [Validators.required]],
+      gce_disco_duro: ['', [Validators.required]],
+      gce_teclado: ['', [Validators.required]],
+      gce_mouse: ['', [Validators.required]],
+      gce_pantalla: ['', [Validators.required]],
+      gce_estado: ['', [Validators.required]],
+    });
   }
 
   getComputers() {
@@ -43,13 +50,12 @@ export class ListadoComponent implements OnInit {
     );
   }
 
-  submitComputer() {
-    if (this.computer.gce_nombre_equipo.trim().length === 0) {
-      return;
-    }
-    this.service.createComputer(this.computer).subscribe(
+  submitForm(): void {
+    // if (this.computer.gce_nombre_equipo.trim().length === 0) {
+    //   return;
+    // }
+    this.service.createComputer(this.computerForm.value).subscribe(
       (res) => {
-        this.computer = res;
         Swal.fire({
           icon: 'success',
           title: 'Created!',
@@ -60,19 +66,7 @@ export class ListadoComponent implements OnInit {
           cancelButtonColor: '#d33',
           timer: 3000,
         });
-        this.computer = {
-          gce_nombre_equipo: '',
-          gce_board: '',
-          gce_case: '',
-          gce_procesador: '',
-          gce_grafica: '',
-          gce_ram: '',
-          gce_disco_duro: '',
-          gce_teclado: '',
-          gce_mouse: '',
-          gce_pantalla: '',
-          gce_estado: 1,
-        };
+
         this.getComputers();
       },
       (err) => console.error('Hay un error al obtener la data')
@@ -122,7 +116,7 @@ export class ListadoComponent implements OnInit {
   }
 
   changeStatus(id: number) {
-    this.service.changeStatusComputer(id, this.computer.gce_estado).subscribe(
+    this.service.changeStatusComputer(id, this.computerForm.value).subscribe(
       (res) => {
         this.getComputers();
         console.log(res);

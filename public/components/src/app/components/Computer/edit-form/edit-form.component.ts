@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { AppService } from '../../../app.service';
 import { Computer } from '../../../app.interface';
@@ -18,19 +18,7 @@ export class EditFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
 
-  computer: Computer = {
-    gce_nombre_equipo: '',
-    gce_board: '',
-    gce_case: '',
-    gce_procesador: '',
-    gce_grafica: '',
-    gce_ram: '',
-    gce_disco_duro: '',
-    gce_teclado: '',
-    gce_mouse: '',
-    gce_pantalla: '',
-    gce_estado: 1,
-  };
+  @Input() computer:any = []
 
   ngOnInit(): void {
     const { id } = this.activatedRoute.snapshot.params;

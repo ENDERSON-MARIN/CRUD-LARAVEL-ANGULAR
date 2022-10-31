@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { EditFormComponent } from './components/Computer/edit-form/edit-form.component';
@@ -25,6 +25,7 @@ import { ListadoComponent } from './components/Computer/listado/listado.componen
     BrowserModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
